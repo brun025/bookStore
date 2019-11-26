@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="card">
+        <div class="card-header bg-primary">
+            Acesse sua conta
+        </div>
+        <div class="card-body">
+            <div class="col-md-12">
+                <h6>Você tem {{qtd}} itens no carrinho</h6>
+
+                <form (submit)="submit()">
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" [(ngModel)]="email" placeholder="email">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+
+                <h6 class="hidden">
+                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>

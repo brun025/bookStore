@@ -1,0 +1,158 @@
+<div class="col-md-12">
+    <div class="row">
+        <div class="card">
+            <div class="card-header bg-primary">
+                Confirmação de pedido
+            </div>
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <span>Número do pedido: </span>
+                        </div>
+                        <div class="col-md-9">
+                            {{orderId}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <span>Endereço de entrega: </span>
+                        </div>
+                        <div class="col-md-9">
+                            {{order[0]?.fname}} {{order[0]?.lname}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-9">
+                            {{order[0]?.street}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-9">
+                            {{order[0]?.fname}}, {{order[0]?.state}} {{order[0]?.zip}}
+                        </div>
+                    </div>
+                </div><br>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <span>Livros comprados</span>
+                        </div>
+                        <div class="col-md-9 text-center">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span>Título</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Qtd</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span>Preço</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span>Total</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" *ngFor="let item of order">
+                    <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-9 text-center"><hr>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <a href="#">{{item.title}}</a>
+                                </div>
+                                <div class="col-md-2">{{item.qty}}</div>
+                                <div class="col-md-2">{{ajuste(item.price,2)}}</div>
+                                <div class="col-md-3">{{ajuste(item.qty * item.price,2)}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div><br><br>
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span>Sub-total:</span>
+                                </div>
+                                <div class="col-md-6">{{ajuste(this.total.sub,2)}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span>Frete:</span>
+                                </div>
+                                <div class="col-md-6">{{ajuste(this.total.frete,2)}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span>Total:</span>
+                                </div>
+                                <div class="col-md-6">{{ajuste(this.total.soma,2)}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 text-center">
+                    <p style="color:white;">
+                        kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                        kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                        kkkkkkkkkkkkkkkkkk
+                    </p>
+                    <p class="emailText">
+                        Uma confirmação foi enviada para o seu endereço de e-mail.<br/>
+                        Obrigado por fazer compras na GeekBooks.com.
+                    </p>
+                    <p>
+                        <button type="button" class="btn btn-primary" [routerLink]="['/']">Continue comprando</button>
+                    </p>
+                    <p>
+                        <button type="button" class="btn btn-primary" [routerLink]="['/historic/',order[0]?.custID]">Histórico de pedidos</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    

@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-12">
+                <h4>{{book?.title}}</h4>
+                <div>
+                    <span>by </span>
+                    <span *ngFor="let author of book?.authorsId.split('-'); let i = index">
+                        <a [routerLink]="['/author/',book.authorsId.split('-')[i]]">{{book.authorsName.split('-')[i]}}, </a>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{book?.ISBN}}.01.MZZZZZZZ.jpg" alt="{{book?.title}}">
+                </div>
+                <div class="col-md-5">
+                    <span>List price: <span class="price-first">{{ajuste(book?.price, 2)}}</span></span><br>
+                    <span>Our price: <span class="price">{{ajuste(book?.price - (book?.price * 20 / 100), 2)}}</span></span><br>
+                    <span>You save: <span class="price">{{ajuste(book?.price * 20 / 100, 2)}} (20%)</span></span><br>
+
+                    <div class="desc">
+                        <span>ISBN: {{book?.ISBN}}</span><br>
+                        <span>Publisher: {{book?.publisher}}</span><br>
+                        <span>Pages: {{book?.pages}}</span><br>
+                        <span>Edition: {{book?.edition}}</span><br>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <button type="button" class="btn btn-primary" (click)="addCarShopping(book)">
+                        <i class="fas fa-cart-arrow-down"></i>
+                        Adicionar ao carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <br>
+                    <div innerHTML="{{book?.description}}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>

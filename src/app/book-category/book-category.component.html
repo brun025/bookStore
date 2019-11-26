@@ -1,0 +1,34 @@
+<div class="row countBooksCategory">
+    <p>{{books.length}} books in <span>{{books[0]?.CategoryName}}</span> category</p>
+    <!-- <p>{{books?.length}} books in <span>categoria1</span> category</p> -->
+</div>
+<div class="row" *ngFor="let book of books">
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-12">
+                <a href="#" [routerLink]="['/book/',book.ISBN]">
+                    <h4>{{book?.title}}</h4>
+                </a>
+
+                <!-- <h6>by autor</h6> -->
+                <span>by </span>
+                <!-- <a href="#">{{book.authorsName}} - </a> -->
+                <span *ngFor="let author of book.authorsId.split('-'); let i = index">
+                    <a [routerLink]="['/author/',book.authorsId.split('-')[i]]">{{book.authorsName.split('-')[i]}}, </a>
+                </span>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{book?.ISBN}}.01.THUMBZZZ.jpg" alt="{{book.title}}">
+                </div>
+                <div class="col-md-11">
+                    <div innerHTML="{{book?.description.substring(0, 390)}}...">
+            
+                    </div>
+                    <!-- <a href="#">more</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>

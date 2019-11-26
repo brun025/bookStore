@@ -1,0 +1,10 @@
+.card{
+    margin-top:2%;
+}
+.card-header{
+    color: white;
+    font-weight: bold;
+}
+.hidden{
+    color: white;
+}

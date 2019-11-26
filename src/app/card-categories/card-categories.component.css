@@ -1,0 +1,9 @@
+.card .card-body ul{
+    list-style: none;
+}
+.card .card-body {
+    text-align: justify;
+}
+.card{
+    z-index: 999;
+}

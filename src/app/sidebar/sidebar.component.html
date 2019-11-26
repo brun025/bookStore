@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-header bg-primary">
+        <span>Search</span>
+    </div>
+
+    <div class="card-body card-search">
+        <input type="text" class="form-control" name="search"  [(ngModel)]="searching">
+        <!-- <br> -->
+        <button type="button" class="btn btn-primary" (click)="search()">Search</button>
+    </div>
+</div>
+
+<br><br>
+<div class="card">
+    <div class="card-header bg-primary">
+        <span>Browser</span>
+    </div>
+
+    <div class="card-body">
+        <ul *ngFor="let category of categories">
+            <li><a href="#">{{category.CategoryName}}</a></li>
+        </ul>
+    </div>
+</div>

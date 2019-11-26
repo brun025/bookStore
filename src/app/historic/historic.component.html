@@ -1,0 +1,42 @@
+<div class="row" >
+    <div class="card">
+        <div class="card-header bg-primary">
+            Histórico de pedidos
+        </div>
+        <div class="card-body">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <span>{{requests.length}} pedido(s) no total</span><br>
+                </div>
+                <div class="col-md-12 hidden">
+                    <span>
+                        kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                        kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                        kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                    </span>
+                </div>
+            </div>
+            <div class="row" *ngFor="let request of requests">
+                <div class="col-md-1">
+                    <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{request.ISBN}}.01.THUMBZZZ.jpg" alt="{{request.title}}">
+                </div>
+                <div class="col-md-10">
+                    <span>Número do pedido: </span>{{request.orderID}}
+                    <span class="date">{{request.orderdate}}</span><br>
+                    <a href="#" [routerLink]="['/book/',request.ISBN]">
+                        <span>{{request.title}}</span>
+                    </a><br>
+                    <span>by</span>
+                    <a href="#" [routerLink]="['/book/',request.ISBN]">
+                        {{request.authors}}
+                    </a><br>
+                    <span>Qtd:</span> {{request.qty}}
+                </div>
+                <div class="col-md-12">
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>

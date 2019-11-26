@@ -1,35 +1,11 @@
-<div class="container">
-  <div class="row">
-    <button class="btn btn-success" (click)="menu = 'Cria'">
-      Cria
-    </button>
-    <button class="btn btn-success" (click)="menu = 'Lista'">
-      Lista
-    </button>
-    <button class="btn btn-success" (click)="menu = 'Deleta'">
-      Deleta
-    </button>
-  </div>
+<app-navbar></app-navbar>
 
-  <div class="row" *ngIf="menu == 'Lista'">
-    <div class="col-md-12">
-      <app-lista>
-      </app-lista>
+<main>
+    <div class="container">
+        <div class="row">
+            <router-outlet></router-outlet>
+        </div>
     </div>
-  </div>
+</main>
 
-  <div class="row" *ngIf="menu == 'Cria'">
-    <div class="col-md-12">
-      <app-cria>        
-      </app-cria>
-    </div>
-  </div>
-
-  <div class="row" *ngIf="menu == 'Deleta'">
-    <div class="col-md-12">
-      <app-deleta>
-      </app-deleta>
-    </div>
-  </div>
-</div>
-
+<app-footer></app-footer>

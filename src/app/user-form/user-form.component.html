@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-12 title">
+        <div innerHTML="{{msg}}"></div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-primary">
+            Cadastro
+        </div>
+        <div class="card-body">
+            <div class="col-md-12">
+                <form (submit)="submit()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" required class="form-control" name="email" [(ngModel)]="dados.email" placeholder="Email">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="fname" [(ngModel)]="dados.fname" placeholder="Nome">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" required class="form-control" name="lname" [(ngModel)]="dados.lname" placeholder="Sobrenome">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" required class="form-control" name="street" [(ngModel)]="dados.street" placeholder="Rua">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" required class="form-control" name="city" [(ngModel)]="dados.city" placeholder="Cidade">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" required class="form-control" name="state" [(ngModel)]="dados.state" placeholder="Estado">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" required class="form-control" name="zip" [(ngModel)]="dados.zip" placeholder="CEP">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Faça seu pedido</button>
+                                <button type="button" class="btn btn-primary historic" *ngIf="this.userFormService.findUser" [routerLink]="['/historic/',this.userFormService.user.custID]">Histórico de pedidos</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+.card-header button{
+    float: right;
+}
+.container{
+   margin-top: 3%;
+}
+@media only screen and (max-width: 768px) {
+    /* .card{
+        overflow-x: scroll;
+    } */
+}

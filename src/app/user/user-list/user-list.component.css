@@ -1,0 +1,17 @@
+.card-header button{
+    float: right;
+}
+td>a>i.fa.fa-trash{
+    color: red;
+}
+table thead{
+    color: white;
+}
+.container{
+   margin-top: 3%;
+}
+@media only screen and (max-width: 768px) {
+    .card{
+        overflow-x: scroll;
+    }
+}

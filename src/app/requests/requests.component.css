@@ -1,0 +1,22 @@
+.bookTitle{
+    /* margin-left: 5%; */
+    font-size: 80%;
+}
+input{
+    width: 40%;
+}
+.panelTotal{
+    background-color: #f8f8f8;
+    /* float: left; */
+}
+.frete{
+    text-align: center;
+    background-color: #f8f8f8;
+}
+.bg-primary{
+    color: white;
+    font-weight: bold;
+}
+span{
+    font-weight: bold;
+}

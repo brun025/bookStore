@@ -1,0 +1,6 @@
+.text-center p{
+    width: 100%;
+}
+.text-center p span{
+    color: red;
+}

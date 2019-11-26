@@ -1,0 +1,104 @@
+<section class="basket__wrapper">
+    <div class="card">
+        <div class="card-header bg-primary">
+            Pedidos
+        </div>
+        <div class="card-body">
+            <div class="row" *ngIf="requests.length==0">
+                <span>Não há itens no seu carrinho.</span>
+            </div>
+
+            <div class="row" *ngIf="requests.length>0">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span>Produto</span>
+                        </div>
+                        <div class="col-md-4">
+                            <span>Qtd.</span>
+                        </div>
+                        <div class="col-md-4">
+                            <span>Preço</span>
+                        </div>
+                        <div class="col-md-12" *ngFor="let request of requests">
+                                <hr>
+            
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <img src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{request.ISBN}}.01.THUMBZZZ.jpg" alt="{{request?.title}}">
+
+                                            </div>
+                                            <div class="col-md-9">
+                                                <span class="bookTitle">{{request.title}}</span>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="number" (change)="changeQtd(request.ISBN,$event)" name="qtd" value="{{request.qtd}}" min="0" class="form-control" >
+                                    </div>
+                                    <div class="col-md-4">R$ {{ajuste(request.price  - (request.price * 20 / 100),2)}}</div>
+                                </div>
+            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 panelTotal">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span>Resumo dos pedidos</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span>{{amount}} produto(s)</span>
+                        </div>
+                        <div class="col-md-6">
+                            <span>R$ {{ajuste(totalProducts, 2)}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span>Frete</span>
+                        </div>
+                        <div class="col-md-6">
+                            <span>R$ {{ajuste(frete, 2)}}</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span>Total</span>
+                        </div>
+                        <div class="col-md-6">
+                            <span>R$ {{ajuste(totalProducts + frete, 2)}}</span>
+                        </div>
+                    </div><br>
+
+
+                    <div class="row text-center">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary" [routerLink]="['/client']">Confirmar</button>
+                        </div>
+                        <div class="col-md-12">
+                            <span>Ou</span>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary" [routerLink]="['/']">Continuar comprando</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row frete">
+                * O frete custa R$ 3,49 para o primeiro livro e R$ 0,99 para cada livro adicional.
+                    Para garantir uma entrega confiável e manter seus custos baixos, 
+                    enviamos todos os livros via UPS ground.
+            </div>
+        </div>
+    </div>
+</section>

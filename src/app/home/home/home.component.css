@@ -1,0 +1,6 @@
+.countBooks p{
+    width: 100%;
+}
+.countBooks p span{
+    color: red;
+}

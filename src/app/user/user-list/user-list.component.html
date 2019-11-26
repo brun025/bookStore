@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <button type="button" class="btn btn-dark" (click)="userService.showModalInsert()">Cadastrar</button>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                            <thead class="bg-dark">
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Perfil</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of users">
+                                    <td>{{ user.name }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.role }}</td>
+                                    <td>
+                                        <a href="javascript:void(0)" (click)="userService.showModalEdit(user)">
+                                            <i class="fa fa-pencil"></i>
+                                        </a> | 
+                                        <a href="javascript:void(0)" (click)="userService.showModalDelete(user.id)">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<user-new-modal></user-new-modal>
+
+<user-delete-modal></user-delete-modal>
+
+<user-edit-modal></user-edit-modal>
+    
+    

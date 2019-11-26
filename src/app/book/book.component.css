@@ -1,0 +1,19 @@
+img{
+    margin-left: 10%;
+    float: right;
+}
+span .price-first{
+    text-decoration: line-through;
+    color:red;
+}
+span .price{
+    color:red;
+    font-weight: bold;
+}
+.desc span{
+    font-weight: bold !important;
+    /* color: black; */
+}
+button{
+    float: right;
+}

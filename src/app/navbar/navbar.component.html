@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> -->
+        <div class="col-md-2 logo">
+          <a href="#" (click)="this.homeService.getBooksAleatories()">
+            <i class="fas fa-book-open fa-2x"></i>
+            <strong>Saraiva</strong>
+          </a>
+        </div>
+  
+        <div class="col-md-7">
+          <form (submit)="submit()">
+              <div class="form-group">
+                  <input type="text" (change)="changeSearch($event)" class="form-control" id="searching" name="searching" [(ngModel)]="searching">
+              </div>
+          </form>
+
+        </div>
+
+        <div class="col-md-2" style="text-align:center;">
+          <a [routerLink]="['/client']">
+            <i class="fas fa-user fa-2x"></i>
+          </a>
+        </div>
+
+        <div class="col-md-1">
+          <a [routerLink]="['/carShopping']">
+            <i class="fas fa-cart-arrow-down fa-2x"></i>
+          </a>
+        </div>
+
+  </nav>
+
+<nav class="navbar navbar-expand-lg navbarLight">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto nav-list">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropbtn">
+            Categorias
+            <i class="fas fa-chevron-down"></i>
+            <div class="dropdown-content">
+              <div  *ngFor="let category of categories">
+                <a [routerLink]="['/category/',category.CategoryID,'books']">{{category.CategoryName}}</a>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Promoções</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Cupons de desconto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Black Friday</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- <ul *ngFor="let category of categories">
+      <li><a href="#">{{category.CategoryName}}</a></li>
+  </ul> -->
+<!-- <card-categories style="z-index: 999;">
+
+</card-categories> -->
+
