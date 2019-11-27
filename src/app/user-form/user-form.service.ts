@@ -14,6 +14,11 @@ export class UserFormService {
   findUser: boolean;
   dados: any;
   msg: string;
+  total = {
+    'sub': 0,
+    'frete': 0,
+    'soma': 0,
+  }
   url = 'http://127.0.0.1:3000';
 
   private _userFormComponent: UserFormComponent;
@@ -107,17 +112,22 @@ export class UserFormService {
   }
 
   sendMail(dados, order, orderId){
-    console.log(dados, order);
-
     let products = '';
+    
     for(let i in order){
+      this.total.sub += order[i].qtd * (order[i].price - (order[i].price * 20 / 100));
+      this.total.frete += parseInt(order[i].qtd);
+
       products += '<tr>'+
-                    `<td>${i+1}-</td>`+
+                    `<td>${parseInt(i)+1}-</td>`+
                     `<td>${order[i].title}-</td>`+
                     `<td>${order[i].qtd}</td>`+
                   '</tr>';
     }
-    
+
+    this.total.frete = 3.49 + ((this.total.frete - 1) * 0.99);
+    this.total.soma = this.total.frete + this.total.sub;
+
     this.message = {
       'message' : `<strong>Número do pedido: ${orderId}</strong><br/><br/>`+
                   '<strong>Produtos comprados:</strong><br/>'+
@@ -137,7 +147,7 @@ export class UserFormService {
                   `<span>${dados.fname} ${dados.lname}</span><br/>` +
                   `<span>${dados.street}</span><br/>`+
                   `<span>${dados.city} ${dados.state} ${dados.zip}</span><br/><br/>`+
-                  `<strong>Total:</strong><br/><br/>`+
+                  `<strong>Total: ${this.ajuste(this.total.soma, 2)}</strong><br/><br/>`+
                   '<span>Seu pedido deve chegar via Sedex dentro de 3-5 dias úteis.</span><br/>'+
                   '<span>Obrigado por comprar na GeekBooks.</span><br/>',
       'subject' : 'Confirmação de pedido GeekBooks',
@@ -151,6 +161,12 @@ export class UserFormService {
     }).catch((erro) => {
       console.log(erro)
     });
+  }
+
+  ajuste(nr, casas) {
+    const og = Math.pow(10, casas)
+    const result = Math.floor(nr * og) / og;
+    return result.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
 
 }

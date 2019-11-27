@@ -42,6 +42,7 @@ export class RequestConfirmationService {
 
     for(let i in order){
       this.total.sub += order[i].qty * order[i].price;
+      console.log(order[i].qty , order[i].price);
       this.total.frete += order[i].qty;
     }
 
