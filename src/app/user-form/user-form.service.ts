@@ -10,6 +10,7 @@ export class UserFormService {
   resposta: any;
   user = {};
   book = {};
+  message = {};
   findUser: boolean;
   dados: any;
   msg: string;
@@ -84,7 +85,7 @@ export class UserFormService {
       req = this.httpClient.post(`${this.url}/orderItem`, this.book).toPromise();
 
       req.then((resposta) => {
-        console.log(resposta)
+        // console.log(resposta)
         this.resposta = resposta
       }).catch((erro) => {
         console.log(erro)
@@ -92,8 +93,8 @@ export class UserFormService {
     }
 
     // apagando variável session de pedidos
+    this.sendMail(this._userFormComponent.dados, JSON.parse(sessionStorage.getItem('book')), orderId);
     sessionStorage.setItem('book', JSON.stringify([]))
-
     this.router.navigateByUrl(`/request-confirmation/${orderId}`);
   }
 
@@ -103,6 +104,53 @@ export class UserFormService {
     var mes = data.getMonth() + 1;
     var ano = data.getFullYear();
     return [dia, mes, ano].join('/');
-}
+  }
+
+  sendMail(dados, order, orderId){
+    console.log(dados, order);
+
+    let products = '';
+    for(let i in order){
+      products += '<tr>'+
+                    `<td>${i+1}-</td>`+
+                    `<td>${order[i].title}-</td>`+
+                    `<td>${order[i].qtd}</td>`+
+                  '</tr>';
+    }
+    
+    this.message = {
+      'message' : `<strong>Número do pedido: ${orderId}</strong><br/><br/>`+
+                  '<strong>Produtos comprados:</strong><br/>'+
+                  '<table>'+
+                    '<thead>'+
+                      '<th>'+
+                        '<td>#</td>'+
+                        '<td>Título</td>'+
+                        '<td>Quantidade</td>'+
+                      '</th>'+
+                    '</thead>'+
+                    '<tbody>'+
+                        products+
+                    '</tbody>'+
+                  '</table><br/><br/>'+
+                  '<strong>Enviar para:</strong><br/>'+
+                  `<span>${dados.fname} ${dados.lname}</span><br/>` +
+                  `<span>${dados.street}</span><br/>`+
+                  `<span>${dados.city} ${dados.state} ${dados.zip}</span><br/><br/>`+
+                  `<strong>Total:</strong><br/><br/>`+
+                  '<span>Seu pedido deve chegar via Sedex dentro de 3-5 dias úteis.</span><br/>'+
+                  '<span>Obrigado por comprar na GeekBooks.</span><br/>',
+      'subject' : 'Confirmação de pedido GeekBooks',
+      'email' : dados.email
+    }
+    
+    const req = this.httpClient.post(`${this.url}/sendMail/`, this.message).toPromise();
+
+    req.then((resposta) => {
+      console.log(resposta)
+    }).catch((erro) => {
+      console.log(erro)
+    });
+  }
 
 }

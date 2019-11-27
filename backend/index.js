@@ -161,7 +161,8 @@ router.post('/sendMail', (req, res) => {
         from: 'teste@gmail.com',
         to: req.body.email,
         subject: req.body.subject,
-        text: req.body.message
+        // text: req.body.message,
+        html: req.body.message,
       };
       
       transporter.sendMail(mailOptions, function(error, info){
