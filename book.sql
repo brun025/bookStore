@@ -217,7 +217,7 @@ CREATE TABLE `bookcustomers` (
   `custID` int(11) NOT NULL AUTO_INCREMENT,
   `fname` varchar(20) NOT NULL,
   `lname` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `street` varchar(100) NOT NULL,
   `city` varchar(30) NOT NULL,
   `state` varchar(2) NOT NULL,

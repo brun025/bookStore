@@ -69,7 +69,7 @@ export class RequestsComponent implements OnInit {
         else{
           this.totalProducts -= this.requests[i].price  - (this.requests[i].price * 20 / 100);
           this.requests.splice(i, 1);
-          this.frete -= 3.49;
+          this.frete -= 0.99;
         }
 
         sessionStorage.setItem('book', JSON.stringify(this.requests));
